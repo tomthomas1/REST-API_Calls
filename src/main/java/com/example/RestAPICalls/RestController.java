@@ -39,6 +39,20 @@ public class RestController {
     public String helloUserParam(@PathVariable String name){
         return "Hello " + name + ". Welcome to Bridgelabz.";
     }
+
+
+    /** UC4 :
+     *Method using Post to pass firstname and lastname in the body.
+     * We are using the JSON file format and passing the data.
+     *
+     * @param user - We are passing the entity user.
+     * @return - Will return the string message
+     * http://localhost:8080/hello/post
+     */
+    @PostMapping("/post")
+    public String sayHello(@RequestBody User user){
+        return " Hello " + user.getFirstName()  + " "+ user.getLastName() + ". Welcome to BridgeLabz";
+    }
     
 }
 
