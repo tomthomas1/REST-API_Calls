@@ -1,7 +1,11 @@
 package com.example.RestAPICalls;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.web.bind.annotation.RestController
+@RequestMapping("/hello")
 public class RestController {
 
     /** UC-1 :
@@ -13,6 +17,18 @@ public class RestController {
     @GetMapping("/hello")
     public String helloUser(){
         return "Hello. Welcome to BridgeLabz.";
+    }
+
+    /** UC 2 :
+     * Method to pass name as query parameter
+     *
+     * @param name - We are passing the name from the client in the URL.
+     * @return - will return the string message
+     * URL : http://localhost:8080/hello/query?name=Tom
+     */
+    @RequestMapping(value = {"/query"}, method = RequestMethod.GET)
+    public String helloUser(@RequestParam(value = "name") String name){
+        return "Hello " + name + ". Welcome to Bridgelabz.";
     }
 }
 
