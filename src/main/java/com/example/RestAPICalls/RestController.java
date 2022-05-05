@@ -53,6 +53,19 @@ public class RestController {
     public String sayHello(@RequestBody User user){
         return " Hello " + user.getFirstName()  + " "+ user.getLastName() + ". Welcome to BridgeLabz";
     }
+
+    /** UC 5 :
+     * Method using PUT and pass first name as path variable and last name as Query parameter
+     *
+     * @param firstName - firstname as path variable
+     * @param lastName - lastname as query parameter
+     * @return -  the output string message.
+     *  URL : http://localhost:8080/hello/put/Tom/?lastName=Thomas
+     */
+    @PutMapping ("/put/{firstName}")
+    public String sayHello(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName){
+        return "Hello " + firstName + " " + lastName  + ". Welcome to BridgeLabz";
+    }
     
 }
 
