@@ -1,8 +1,6 @@
 package com.example.RestAPICalls;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.example.RestAPICalls.entity.User;
+import org.springframework.web.bind.annotation.*;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/hello")
@@ -30,5 +28,17 @@ public class RestController {
     public String helloUser(@RequestParam(value = "name") String name){
         return "Hello " + name + ". Welcome to Bridgelabz.";
     }
+
+    /** UC3 :
+     * Method to pass name as path variable
+     * @param name - We are passing the name from the client in the URL.
+     * @return - will return the string message
+     * URL : http://localhost:8080/hello/param/Tom
+     */
+    @GetMapping("/param/{name}")
+    public String helloUserParam(@PathVariable String name){
+        return "Hello " + name + ". Welcome to Bridgelabz.";
+    }
+    
 }
 
